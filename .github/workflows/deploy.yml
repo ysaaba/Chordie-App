@@ -10,6 +10,10 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -27,6 +31,8 @@ jobs:
       
       - name: Build
         run: npm run build
+        env:
+          PUBLIC_URL: /Chordie-App
       
       - name: Create .nojekyll file
         run: touch ./dist/.nojekyll
