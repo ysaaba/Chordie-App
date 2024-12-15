@@ -2,46 +2,34 @@ import { ChordSet } from '../../types/chord';
 
 export const chordSets: ChordSet[] = [
   {
-    name: 'Essential Open Chords',
-    description: 'The most common open chords for beginners',
-    chords: ['A', 'D', 'G', 'C', 'Em', 'E'],
+    name: 'Basic Open Chords',
+    description: 'Essential open chord shapes',
+    chords: ['A', 'D', 'G', 'C', 'Em', 'Am'],
     difficulty: 'beginner'
   },
   {
-    name: 'Basic Seventh Chords',
-    description: 'Common seventh chord variations',
-    chords: ['A7', 'D7', 'G7', 'C7', 'E7'],
-    difficulty: 'beginner'
-  },
-  {
-    name: 'Minor Chords',
-    description: 'Basic minor chord progression practice',
-    chords: ['Am', 'Em', 'Dm', 'Bm'],
+    name: 'Seventh Chords',
+    description: 'Basic seventh chord shapes',
+    chords: ['A7', 'D7', 'G7', 'C7', 'Em7', 'Am7'],
     difficulty: 'beginner'
   },
   {
     name: 'Barre Chords',
-    description: 'Essential barre chords for intermediate players',
-    chords: ['F', 'Bm', 'Fm', 'Gm', 'F#', 'C#', 'G#', 'Bb', 'C#m', 'G#m', 'Bbm', 'Ebm'],
+    description: 'Major and minor barre chord shapes',
+    chords: ['F', 'Bm', 'F#/Gb', 'G#/Ab', 'C#/Db', 'Fm', 'G#m/Abm', 'C#m/Dbm', 'D#m/Ebm'],
     difficulty: 'intermediate'
   },
   {
-    name: 'Extended Chords',
+    name: 'Seventh Variations',
     description: 'Major and minor seventh variations',
-    chords: ['Cmaj7', 'Dmaj7', 'Gmaj7', 'Am7', 'Em7', 'Dm7'],
+    chords: ['Cmaj7', 'F#maj7/Gbmaj7', 'G#maj7/Abmaj7', 'Bmaj7', 'Am7', 'Dm7', 'Em7', 'G#m7/Abm7'],
     difficulty: 'intermediate'
   },
   {
     name: 'Suspended Chords',
     description: 'Sus2 and Sus4 variations',
-    chords: ['Asus2', 'Asus4', 'Dsus2', 'Dsus4', 'Esus2', 'Esus4'],
+    chords: ['Asus2', 'Dsus4', 'Esus2', 'Gsus4'],
     difficulty: 'intermediate'
-  },
-  {
-    name: 'Jazz Chords',
-    description: 'Common jazz chord voicings',
-    chords: ['Am9', 'Dm9', 'Cmaj9', 'Gmaj9', 'Bm9'],
-    difficulty: 'advanced'
   },
   {
     name: 'Altered Dominants',

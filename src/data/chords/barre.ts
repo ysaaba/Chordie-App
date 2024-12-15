@@ -1,7 +1,7 @@
 import { ChordDefinition } from '../../types/chord';
 
 export const barreChords: Record<string, ChordDefinition> = {
-  // Keep all existing chords
+  // Basic barre chords
   F: {
     name: 'F Major',
     positions: [1, 3, 3, 2, 1, 1],
@@ -26,60 +26,55 @@ export const barreChords: Record<string, ChordDefinition> = {
     fingers: [1, 3, 4, 1, 1, 1],
     difficulty: 'intermediate',
   },
-  'F#': {
-    name: 'F# Major',
+  'F#/Gb': {
+    name: 'F# / Gb Major',
     positions: [2, 4, 4, 3, 2, 2],
     fingers: [1, 3, 4, 2, 1, 1],
     difficulty: 'intermediate',
   },
-  'C#': {
-    name: 'C# Major',
+  'C#/Db': {
+    name: 'C# / Db Major',
     positions: [9, 11, 11, 10, 9, 9],
     fingers: [1, 3, 4, 2, 1, 1],
     difficulty: 'intermediate',
   },
-  'G#': {
-    name: 'G# Major',
+  'G#/Ab': {
+    name: 'G# / Ab Major',
     positions: [4, 6, 6, 5, 4, 4],
     fingers: [1, 3, 4, 2, 1, 1],
     difficulty: 'intermediate',
   },
-  Ab: {
-    name: 'Ab Major',
-    positions: [4, 6, 6, 5, 4, 4],
-    fingers: [1, 3, 4, 2, 1, 1],
-    difficulty: 'intermediate',
-  },
-  Bb: {
-    name: 'Bb Major',
+  'A#/Bb': {
+    name: 'A# / Bb Major',
     positions: [6, 8, 8, 7, 6, 6],
     fingers: [1, 3, 4, 2, 1, 1],
     difficulty: 'intermediate',
   },
-  'C#m': {
-    name: 'C# Minor',
+  'C#m/Dbm': {
+    name: 'C# / Db Minor',
     positions: [9, 11, 11, 9, 9, 9],
     fingers: [1, 3, 4, 1, 1, 1],
     difficulty: 'intermediate',
   },
-  Ebm: {
-    name: 'Eb Minor',
-    positions: [6, 8, 8, 6, 6, 6],
+  'D#m/Ebm': {
+    name: 'D# / Eb Minor',
+    positions: [11, 13, 13, 11, 11, 11],
     fingers: [1, 3, 4, 1, 1, 1],
     difficulty: 'intermediate',
   },
-  'G#m': {
-    name: 'G# Minor',
+  'G#m/Abm': {
+    name: 'G# / Ab Minor',
     positions: [4, 6, 6, 4, 4, 4],
     fingers: [1, 3, 4, 1, 1, 1],
     difficulty: 'intermediate',
   },
-  Bbm: {
-    name: 'Bb Minor',
+  'A#m/Bbm': {
+    name: 'A# / Bb Minor',
     positions: [6, 8, 8, 6, 6, 6],
     fingers: [1, 3, 4, 1, 1, 1],
     difficulty: 'intermediate',
   },
+  // Seventh chords
   Dm7: {
     name: 'D Minor 7',
     positions: [5, 7, 5, 5, 5, 5],
@@ -92,38 +87,26 @@ export const barreChords: Record<string, ChordDefinition> = {
     fingers: [1, 3, 1, 1, 1, 1],
     difficulty: 'intermediate',
   },
-  'F#7': {
-    name: 'F# Seventh',
+  'F#7/Gb7': {
+    name: 'F# / Gb Seventh',
     positions: [2, 4, 2, 3, 2, 2],
     fingers: [1, 3, 1, 2, 1, 1],
     difficulty: 'intermediate',
   },
-  'G#m7': {
-    name: 'G# Minor 7',
+  'G#m7/Abm7': {
+    name: 'G# / Ab Minor 7',
     positions: [4, 6, 4, 4, 4, 4],
     fingers: [1, 3, 1, 1, 1, 1],
     difficulty: 'intermediate',
   },
-  'A#': {
-    name: 'A# Major',
-    positions: [6, 8, 8, 7, 6, 6],
-    fingers: [1, 3, 4, 2, 1, 1],
-    difficulty: 'intermediate',
-  },
-  'C#7': {
-    name: 'C# Seventh',
+  'C#7/Db7': {
+    name: 'C# / Db Seventh',
     positions: [9, 11, 9, 10, 9, 9],
     fingers: [1, 3, 1, 2, 1, 1],
     difficulty: 'intermediate',
   },
-  'D#m': {
-    name: 'D# Minor',
-    positions: [11, 13, 13, 11, 11, 11],
-    fingers: [1, 3, 4, 1, 1, 1],
-    difficulty: 'intermediate',
-  },
-  'F#m7': {
-    name: 'F# Minor 7',
+  'F#m7/Gbm7': {
+    name: 'F# / Gb Minor 7',
     positions: [2, 4, 2, 2, 2, 2],
     fingers: [1, 3, 1, 1, 1, 1],
     difficulty: 'intermediate',
@@ -134,64 +117,35 @@ export const barreChords: Record<string, ChordDefinition> = {
     fingers: [1, 3, 1, 2, 1, 1],
     difficulty: 'intermediate',
   },
-  'C#m7': {
-    name: 'C# Minor 7',
-    positions: [9, 11, 9, 9, 9, 9],
-    fingers: [1, 3, 1, 1, 1, 1],
-    difficulty: 'intermediate',
-  },
-  Abm7: {
-    name: 'Ab Minor 7',
-    positions: [4, 6, 4, 4, 4, 4],
-    fingers: [1, 3, 1, 1, 1, 1],
-    difficulty: 'intermediate',
-  },
-  Bbmaj7: {
-    name: 'Bb Major 7',
+  // Major 7 chords
+  'A#maj7/Bbmaj7': {
+    name: 'A# / Bb Major 7',
     positions: [6, 8, 7, 7, 6, 6],
     fingers: [1, 3, 2, 2, 1, 1],
     difficulty: 'intermediate',
   },
-  Ebmaj7: {
-    name: 'Eb Major 7',
+  'D#maj7/Ebmaj7': {
+    name: 'D# / Eb Major 7',
     positions: [11, 13, 12, 12, 11, 11],
     fingers: [1, 3, 2, 2, 1, 1],
     difficulty: 'intermediate',
   },
-  'G#maj7': {
-    name: 'G# Major 7',
+  'G#maj7/Abmaj7': {
+    name: 'G# / Ab Major 7',
     positions: [4, 6, 5, 5, 4, 4],
     fingers: [1, 3, 2, 2, 1, 1],
     difficulty: 'intermediate',
   },
-  'C#maj7': {
-    name: 'C# Major 7',
+  'C#maj7/Dbmaj7': {
+    name: 'C# / Db Major 7',
     positions: [9, 11, 10, 10, 9, 9],
     fingers: [1, 3, 2, 2, 1, 1],
     difficulty: 'intermediate',
   },
-  'F#maj7': {
-    name: 'F# Major 7',
+  'F#maj7/Gbmaj7': {
+    name: 'F# / Gb Major 7',
     positions: [2, 4, 3, 3, 2, 2],
     fingers: [1, 3, 2, 2, 1, 1],
-    difficulty: 'intermediate',
-  },
-  Dbm7: {
-    name: 'Db Minor 7',
-    positions: [9, 11, 9, 9, 9, 9],
-    fingers: [1, 3, 1, 1, 1, 1],
-    difficulty: 'intermediate',
-  },
-  Gbmaj7: {
-    name: 'Gb Major 7',
-    positions: [2, 4, 3, 3, 2, 2],
-    fingers: [1, 3, 2, 2, 1, 1],
-    difficulty: 'intermediate',
-  },
-  Ebm7: {
-    name: 'Eb Minor 7',
-    positions: [11, 13, 11, 11, 11, 11],
-    fingers: [1, 3, 1, 1, 1, 1],
     difficulty: 'intermediate',
   },
   Bmaj7: {

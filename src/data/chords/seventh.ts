@@ -36,5 +36,11 @@ export const seventhChords: Record<string, ChordDefinition> = {
     positions: [-1, 2, 1, 2, 0, 2],
     fingers: [0, 2, 1, 3, 0, 4],
     difficulty: 'intermediate'
+  },
+  'Am7': {
+    name: 'A Minor 7',
+    positions: [-1, 0, 2, 0, 1, 0],
+    fingers: [0, 0, 2, 0, 1, 0],
+    difficulty: 'beginner'
   }
 };

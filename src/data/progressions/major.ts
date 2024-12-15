@@ -41,7 +41,6 @@ export const majorProgressions: ChordProgression[] = [
     description: 'Jazz turnaround',
     pattern: ['I', 'IV', 'ii', 'V']
   },
-  // New progressions added below
   {
     name: 'I-vi-ii-V-I',
     description: 'Extended jazz progression',
@@ -63,8 +62,48 @@ export const majorProgressions: ChordProgression[] = [
     pattern: ['I', 'V', 'vi', 'iii']
   },
   {
-    name: 'I-IV-I-V-vi-IV-V',
+    name: 'I-IV-I-V',
+    description: 'Simple verse progression',
+    pattern: ['I', 'IV', 'I', 'V']
+  },
+  {
+    name: 'I-vi-ii-IV',
+    description: 'Gentle progression',
+    pattern: ['I', 'vi', 'ii', 'IV']
+  },
+  {
+    name: 'I-V-IV-IV',
+    description: 'Rock ballad progression',
+    pattern: ['I', 'V', 'IV', 'IV']
+  },
+  {
+    name: 'vi-V-IV-III',
+    description: 'Descending progression',
+    pattern: ['vi', 'V', 'IV', 'III']
+  },
+  {
+    name: 'I-V-vi-IV-V',
     description: 'Extended pop progression',
-    pattern: ['I', 'IV', 'I', 'V', 'vi', 'IV', 'V']
+    pattern: ['I', 'V', 'vi', 'IV', 'V']
+  },
+  {
+    name: 'I-iii-vi-ii-V',
+    description: 'Jazz ballad progression',
+    pattern: ['I', 'iii', 'vi', 'ii', 'V']
+  },
+  {
+    name: 'I-IV-ii-V-iii-vi',
+    description: 'Extended circle progression',
+    pattern: ['I', 'IV', 'ii', 'V', 'iii', 'vi']
+  },
+  {
+    name: 'I-V-vi-IV-I-V',
+    description: 'Extended pop cadence',
+    pattern: ['I', 'V', 'vi', 'IV', 'I', 'V']
+  },
+  {
+    name: 'I-vi-iii-IV-ii-V-I',
+    description: 'Complete circle progression',
+    pattern: ['I', 'vi', 'iii', 'IV', 'ii', 'V', 'I']
   }
 ];

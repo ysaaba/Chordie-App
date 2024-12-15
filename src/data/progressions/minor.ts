@@ -41,7 +41,6 @@ export const minorProgressions: ChordProgression[] = [
     description: 'Minor dramatic progression',
     pattern: ['i', 'v', 'VI', 'V']
   },
-  // New progressions added below
   {
     name: 'i-VII-VI-v-iv-III',
     description: 'Minor descending sequence',
@@ -53,18 +52,48 @@ export const minorProgressions: ChordProgression[] = [
     pattern: ['i', 'VI', 'III', 'iv', 'v', 'i']
   },
   {
-    name: 'i-iv-i-V-VI-iv-V',
-    description: 'Extended minor pop progression',
-    pattern: ['i', 'iv', 'i', 'V', 'VI', 'iv', 'V']
+    name: 'i-iv-i-V',
+    description: 'Minor verse progression',
+    pattern: ['i', 'iv', 'i', 'V']
   },
   {
-    name: 'i-III-VI-iv-v-i',
-    description: 'Minor storytelling progression',
-    pattern: ['i', 'III', 'VI', 'iv', 'v', 'i']
-  },
-  {
-    name: 'i-v-iv-VII-III-VI-v',
+    name: 'i-III-VII-iv',
     description: 'Epic minor progression',
-    pattern: ['i', 'v', 'iv', 'VII', 'III', 'VI', 'v']
+    pattern: ['i', 'III', 'VII', 'iv']
+  },
+  {
+    name: 'i-v-iv-v',
+    description: 'Minor rock progression',
+    pattern: ['i', 'v', 'iv', 'v']
+  },
+  {
+    name: 'i-VI-III-VII-i',
+    description: 'Extended Andalusian',
+    pattern: ['i', 'VI', 'III', 'VII', 'i']
+  },
+  {
+    name: 'i-v-VI-iv-v',
+    description: 'Dramatic minor progression',
+    pattern: ['i', 'v', 'VI', 'iv', 'v']
+  },
+  {
+    name: 'i-iv-VII-III-VI',
+    description: 'Extended minor sequence',
+    pattern: ['i', 'iv', 'VII', 'III', 'VI']
+  },
+  {
+    name: 'i-v-iv-VII-III-i',
+    description: 'Minor journey return',
+    pattern: ['i', 'v', 'iv', 'VII', 'III', 'i']
+  },
+  {
+    name: 'i-VI-VII-v-iv-i',
+    description: 'Minor storytelling return',
+    pattern: ['i', 'VI', 'VII', 'v', 'iv', 'i']
+  },
+  {
+    name: 'i-III-iv-v-VI-i',
+    description: 'Minor cinematic progression',
+    pattern: ['i', 'III', 'iv', 'v', 'VI', 'i']
   }
 ];
