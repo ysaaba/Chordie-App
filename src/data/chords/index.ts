@@ -12,6 +12,7 @@ import { add9Chords } from './add9';
 import { maj13Chords } from './maj13';
 import { min11Chords } from './min11';
 
+// Organize chords by category
 export const chordCategories = {
   basic: basicChords,
   seventh: seventhChords,
@@ -28,6 +29,7 @@ export const chordCategories = {
   min11: min11Chords,
 };
 
+// Export chord sets
 export { chordSets } from './sets';
 
 // Combine all chord definitions into a single object
