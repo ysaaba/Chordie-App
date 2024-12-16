@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Timer, Play, Pause, Shuffle } from 'lucide-react';
 import { PracticeSettings } from '../types/chord';
-import { CHORD_COUNT_OPTIONS } from '../utils/chord/options';
 import { BarsPerChordSelect } from './practice/BarsPerChordSelect';
 
 interface PracticeControlsProps {
@@ -11,6 +10,9 @@ interface PracticeControlsProps {
   onPlayPause: () => void;
   onShuffleAll: () => void;
   isShuffleMode: boolean;
+  totalChords: number;
+  currentModeChords: number;
+  mode: 'all' | 'sets' | 'scales';
 }
 
 export const PracticeControls: React.FC<PracticeControlsProps> = ({
@@ -20,7 +22,21 @@ export const PracticeControls: React.FC<PracticeControlsProps> = ({
   onPlayPause,
   onShuffleAll,
   isShuffleMode,
+  totalChords,
+  currentModeChords,
+  mode,
 }) => {
+  useEffect(() => {
+    if (mode !== 'all' && settings.numberOfChords > currentModeChords) {
+      onSettingsChange({
+        ...settings,
+        numberOfChords: currentModeChords
+      });
+    }
+  }, [mode, currentModeChords]);
+
+  const maxChords = mode === 'all' ? totalChords : currentModeChords;
+
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
       <div className="flex items-center justify-between mb-6">
@@ -71,27 +87,27 @@ export const PracticeControls: React.FC<PracticeControlsProps> = ({
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Number of Chords
           </label>
-          <select
-            value={settings.numberOfChords}
+          <input
+            type="range"
+            min="1"
+            max={maxChords}
+            value={Math.min(settings.numberOfChords, maxChords)}
             onChange={(e) =>
               onSettingsChange({
                 ...settings,
                 numberOfChords: parseInt(e.target.value),
               })
             }
-            className="w-full p-2 border rounded-md bg-white text-gray-700 hover:border-blue-500 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-colors"
-          >
-            {CHORD_COUNT_OPTIONS.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
-          </select>
-          <p className="mt-1 text-sm text-gray-500">
-            {isShuffleMode
-              ? 'Number of random chords to include in practice'
-              : 'Select how many chords you want to practice at once'}
-          </p>
+            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+          />
+          <div className="flex justify-between text-sm text-gray-600 mt-1">
+            <span>1 chord</span>
+            <span>
+              {settings.numberOfChords === maxChords 
+                ? mode === 'all' ? 'All chords' : `All ${maxChords} chords`
+                : `${settings.numberOfChords} chords`}
+            </span>
+          </div>
         </div>
 
         <BarsPerChordSelect

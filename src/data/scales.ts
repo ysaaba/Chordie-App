@@ -9,10 +9,7 @@ const createMajorScale = (
 ): Scale => ({
   name: `${tonic} Major`,
   chords,
-  progressions: majorProgressions.map(prog => ({
-    ...prog,
-    pattern: resolveProgressionPattern({ name: `${tonic} Major`, chords, progressions: [] }, prog.pattern)
-  }))
+  progressions: majorProgressions
 });
 
 const createMinorScale = (
@@ -21,10 +18,7 @@ const createMinorScale = (
 ): Scale => ({
   name: `${tonic} Minor`,
   chords,
-  progressions: minorProgressions.map(prog => ({
-    ...prog,
-    pattern: resolveProgressionPattern({ name: `${tonic} Minor`, chords, progressions: [] }, prog.pattern)
-  }))
+  progressions: minorProgressions
 });
 
 export const scales: Scale[] = [

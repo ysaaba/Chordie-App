@@ -20,6 +20,11 @@ export const ScaleSelector: React.FC<ScaleSelectorProps> = ({
 }) => {
   const currentScale = scales.find(s => s.name === selectedScale);
 
+  // Debug logging
+  console.log('Current Scale:', currentScale);
+  console.log('Selected Progression:', selectedProgression);
+  console.log('Available Progressions:', currentScale?.progressions);
+
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
       <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
@@ -34,7 +39,10 @@ export const ScaleSelector: React.FC<ScaleSelectorProps> = ({
           </label>
           <select
             value={selectedScale || ''}
-            onChange={(e) => onScaleChange(e.target.value || null)}
+            onChange={(e) => {
+              onScaleChange(e.target.value || null);
+              onProgressionChange(null); // Reset progression when scale changes
+            }}
             className="w-full p-2 border rounded-md bg-white text-gray-700 hover:border-blue-500 focus:border-blue-500 focus:ring focus:ring-blue-200 transition-colors"
           >
             <option value="">Select a scale</option>
@@ -55,7 +63,10 @@ export const ScaleSelector: React.FC<ScaleSelectorProps> = ({
         )}
 
         {currentScale && (
-          <ScaleChordList scale={currentScale} />
+          <ScaleChordList 
+            scale={currentScale} 
+            selectedProgression={selectedProgression}
+          />
         )}
       </div>
     </div>

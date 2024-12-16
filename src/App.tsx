@@ -11,6 +11,8 @@ import { ChordSelector } from './components/ChordSelector';
 import { ScaleSelector } from './components/ScaleSelector';
 import { PracticeModeSelector } from './components/practice/PracticeModeSelector';
 import type { PracticeSettings } from './types/chord';
+import { chordCategories, chordSets } from './data/chords';
+import { scales } from './data/scales';
 
 function App() {
   const [settings, setSettings] = React.useState<PracticeSettings>({
@@ -49,6 +51,8 @@ function App() {
     chords: availableChords,
     settings,
     shuffle: shuffleEnabled,
+    mode: practiceMode,
+    hasProgression: !!selection.selectedProgression,
   });
 
   const { currentBeat } = useMetronome({
@@ -62,6 +66,23 @@ function App() {
   const handlePlayPause = () => {
     setIsPlaying(!isPlaying);
   };
+
+  const totalChords = Object.values(chordCategories).flatMap(category => Object.values(category)).length;
+
+  // Calculate current mode's total chords
+  const getCurrentModeChords = () => {
+    if (practiceMode === 'scales' && selection.selectedScale) {
+      const scale = scales.find(s => s.name === selection.selectedScale);
+      return scale?.chords.length || 0;
+    }
+    if (practiceMode === 'sets' && selection.selectedSetId) {
+      const set = chordSets.find(s => s.name === selection.selectedSetId);
+      return set?.chords.length || 0;
+    }
+    return totalChords;
+  };
+
+  const currentModeChords = getCurrentModeChords();
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -137,6 +158,9 @@ function App() {
               onPlayPause={handlePlayPause}
               onShuffleAll={() => setPracticeMode('all')}
               isShuffleMode={practiceMode === 'all'}
+              totalChords={totalChords}
+              currentModeChords={currentModeChords}
+              mode={practiceMode}
             />
           </div>
         </div>

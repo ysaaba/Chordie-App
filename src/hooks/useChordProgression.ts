@@ -1,103 +1,88 @@
-import { useState, useCallback, useEffect } from 'react';
-import { ChordDefinition } from '../types/chord';
+import { useState, useCallback, useEffect, useMemo } from 'react';
+import { ChordDefinition, PracticeSettings } from '../types/chord';
 
 interface UseChordProgressionProps {
   chords: ChordDefinition[];
-  settings: {
-    tempo: number;
-    numberOfChords: number;
-    barsPerChord: number;
-  };
+  settings: PracticeSettings;
   shuffle: boolean;
+  mode: 'all' | 'sets' | 'scales';
+  hasProgression?: boolean;
 }
 
 export const useChordProgression = ({
   chords,
   settings,
   shuffle,
+  mode,
+  hasProgression = false
 }: UseChordProgressionProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [recentIndices] = useState<Set<number>>(new Set());
+  const [currentBarCount, setCurrentBarCount] = useState(0);
   const [history, setHistory] = useState<number[]>([0]);
   const [historyIndex, setHistoryIndex] = useState(0);
-  const [currentBarCount, setCurrentBarCount] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
 
-  // Reset state when chords array changes
-  useEffect(() => {
-    setCurrentIndex(0);
-    setHistory([0]);
-    setHistoryIndex(0);
-    setCurrentBarCount(0);
-    recentIndices.clear();
-  }, [chords]);
-
-  const getNextIndex = useCallback(() => {
-    if (!shuffle || chords.length <= 1) {
-      return (currentIndex + 1) % Math.max(chords.length, 1);
+  // Handle shuffling and chord limiting based on mode
+  const practiceChords = useMemo(() => {
+    // Don't shuffle if there's a progression selected
+    if (mode === 'scales' && hasProgression) {
+      return chords;
     }
 
-    const availableIndices = Array.from(
-      { length: chords.length },
-      (_, i) => i
-    ).filter(i => !recentIndices.has(i) && i !== currentIndex);
-
-    if (availableIndices.length === 0) {
-      recentIndices.clear();
-      return Math.floor(Math.random() * chords.length);
+    // For scales without progression, just shuffle if enabled
+    if (mode === 'scales') {
+      return shuffle ? 
+        [...chords].sort(() => Math.random() - 0.5) : 
+        chords;
     }
 
-    return availableIndices[Math.floor(Math.random() * availableIndices.length)];
-  }, [currentIndex, chords.length, shuffle, recentIndices]);
+    // For 'all' mode and 'sets' mode:
+    const availableChords = shuffle ? 
+      [...chords].sort(() => Math.random() - 0.5) : 
+      chords;
+
+    // Limit number of chords for both 'all' and 'sets' modes
+    return availableChords.slice(0, settings.numberOfChords);
+
+  }, [chords, settings.numberOfChords, shuffle, mode, hasProgression]);
 
   const handleNextChord = useCallback(() => {
-    if (chords.length === 0) return;
-
-    // Increment bar count
-    const newBarCount = currentBarCount + 1;
-    setCurrentBarCount(newBarCount);
-
-    // Only change chord if we've reached the desired number of bars
-    if (newBarCount >= settings.barsPerChord) {
-      const nextIndex = getNextIndex();
-      setCurrentIndex(nextIndex);
+    if (currentBarCount + 1 >= settings.barsPerChord) {
       setCurrentBarCount(0);
-
-      if (shuffle) {
-        recentIndices.add(nextIndex);
-        if (recentIndices.size > Math.min(3, chords.length - 1)) {
-          recentIndices.delete(Array.from(recentIndices)[0]);
-        }
-      }
-
-      setHistory(prev => [...prev.slice(0, historyIndex + 1), nextIndex]);
-      setHistoryIndex(prev => prev + 1);
+      setCurrentIndex(prevIndex => {
+        const nextIndex = (prevIndex + 1) % practiceChords.length;
+        setHistory(prev => [...prev, nextIndex]);
+        setHistoryIndex(prev => prev + 1);
+        return nextIndex;
+      });
+    } else {
+      setCurrentBarCount(prev => prev + 1);
     }
-  }, [
-    chords.length,
-    getNextIndex,
-    shuffle,
-    historyIndex,
-    recentIndices,
-    currentBarCount,
-    settings.barsPerChord
-  ]);
+  }, [currentBarCount, settings.barsPerChord, practiceChords.length]);
+
+  // Reset when chords change
+  useEffect(() => {
+    setCurrentIndex(0);
+    setCurrentBarCount(0);
+    setHistory([0]);
+    setHistoryIndex(0);
+  }, [practiceChords]);
 
   const handleManualNext = useCallback(() => {
-    if (chords.length === 0) return;
+    if (practiceChords.length === 0) return;
     setCurrentBarCount(0);
     handleNextChord();
-  }, [chords.length, handleNextChord]);
+  }, [practiceChords.length, handleNextChord]);
 
   const handleManualPrevious = useCallback(() => {
-    if (historyIndex <= 0 || chords.length === 0) return;
+    if (historyIndex <= 0 || practiceChords.length === 0) return;
     setHistoryIndex(prev => prev - 1);
     setCurrentIndex(history[historyIndex - 1]);
     setCurrentBarCount(0);
-  }, [historyIndex, history, chords.length]);
+  }, [historyIndex, history, practiceChords.length]);
 
   return {
-    currentChord: chords.length > 0 ? chords[currentIndex] : null,
+    currentChord: practiceChords.length > 0 ? practiceChords[currentIndex] : null,
     handleNextChord,
     handleManualNext,
     handleManualPrevious,
