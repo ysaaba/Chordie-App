@@ -1,11 +1,10 @@
 import { ChordDefinition } from '../../types/chord';
 
 export const basicChords: Record<string, ChordDefinition> = {
-  // Basic Open Chords
   'A': {
     name: 'A Major',
     positions: [-1, 0, 2, 2, 2, 0],
-    fingers: [0, 0, 1, 2, 3, 0],
+    fingers: [0, 0, 2, 3, 1, 0],
     difficulty: 'beginner'
   },
   'Am': {

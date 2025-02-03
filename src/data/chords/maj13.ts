@@ -9,8 +9,8 @@ export const maj13Chords: Record<string, ChordDefinition> = {
   },
   'Dmaj13': {
     name: 'D Major 13',
-    positions: [-1, -1, 0, 2, 1, 2],
-    fingers: [0, 0, 0, 3, 1, 2],
+    positions: [-1, 4, 4, 6, 6, 4],
+    fingers: [0, 1, 1, 2, 3, 1],
     difficulty: 'advanced'
   },
   'Emaj13': {

@@ -51,7 +51,7 @@ export const chordSets: ChordSet[] = [
     description: 'Common jazz chord voicings',
     chords: [
       'Am9', 'Bm9', 'Cm9', 'Dm9',
-      'Em11', 'Fmaj9', 'Gmaj9'
+      'Em11', 'FM9', 'GM9', 'Dmaj13'  // Updated to use Dmaj13
     ],
     difficulty: 'advanced'
   },
@@ -77,8 +77,8 @@ export const chordSets: ChordSet[] = [
     name: 'Complex Extensions',
     description: 'Advanced chord extensions',
     chords: [
-      'Cmaj13', 'Dmaj13', 'Emaj13', 'Fmaj13', 'Gmaj13', 'Amaj13', 'Bmaj13',
-      'Cm11', 'Dm11', 'Em11', 'Fm11', 'Gm11', 'Am11', 'Bm11'
+      'CM7', 'Dmaj13', 'EbM7', 'FM7#5', 'GM9', 'AM7b5', 'BM7#11',  // Updated to use Dmaj13
+      'Cm11', 'Dm11', 'Em11', 'Fm11', 'Gm11', 'Am11', 'Bm11', 'Gmaj13'  // Updated to use Gmaj13
     ],
     difficulty: 'advanced'
   }

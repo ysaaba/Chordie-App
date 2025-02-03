@@ -3,8 +3,8 @@ import { ChordDefinition } from '../../types/chord';
 export const jazzChords: Record<string, ChordDefinition> = {
   'Am9': {
     name: 'A Minor 9',
-    positions: [-1, 0, 2, 0, 1, 0],
-    fingers: [0, 0, 2, 0, 1, 0],
+    positions: [-1, 0, 2, 4, 1, 3],
+    fingers: [0, 0, 2, 4, 1, 3],
     difficulty: 'advanced'
   },
   'Bm9': {
@@ -27,17 +27,17 @@ export const jazzChords: Record<string, ChordDefinition> = {
   },
   'Em11': {
     name: 'E Minor 11',
-    positions: [0, 0, 0, 0, 0, 2],
-    fingers: [0, 0, 0, 0, 0, 2],
+    positions: [0, 7, 5, 5, 3, 0],
+    fingers: [0, 4, 2, 3, 1, 0],
     difficulty: 'advanced'
   },
-  'Fmaj9': {
+  'FM9': {
     name: 'F Major 9',
     positions: [-1, -1, 3, 2, 3, 0],
     fingers: [0, 0, 3, 1, 4, 0],
     difficulty: 'advanced'
   },
-  'Gmaj9': {
+  'GM9': {
     name: 'G Major 9',
     positions: [3, -1, 0, 2, 0, 0],
     fingers: [3, 0, 0, 2, 0, 0],
