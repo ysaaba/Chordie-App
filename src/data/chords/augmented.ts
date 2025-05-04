@@ -1,28 +1,53 @@
 import { ChordDefinition } from '../../types/chord';
 
 export const augmentedChords: Record<string, ChordDefinition> = {
-  'Caug7': {
-    name: 'C Augmented 7',
-    positions: [-1, 3, 2, 3, 3, -1],
-    fingers: [0, 2, 1, 3, 4, 0],
+  'Caug': {
+    name: 'C Augmented',
+    // C E G# - major triad with raised 5th
+    positions: [-1, 3, 2, 1, 1, -1],
+    fingers: [0, 4, 3, 1, 2, 0],
     difficulty: 'advanced'
   },
-  'Daug7': {
-    name: 'D Augmented 7',
-    positions: [-1, 5, 4, 5, 5, -1],
-    fingers: [0, 2, 1, 3, 4, 0],
+  'Daug': {
+    name: 'D Augmented',
+    // D F# A# - augmented triad
+    positions: [-1, 5, 4, 3, 3, -1],
+    fingers: [0, 4, 3, 1, 2, 0],
     difficulty: 'advanced'
   },
-  'Eaug7': {
-    name: 'E Augmented 7',
+  'Eaug': {
+    name: 'E Augmented',
+    // E G# B# (C) - augmented triad
     positions: [0, 3, 2, 1, 1, 0],
     fingers: [0, 4, 3, 1, 2, 0],
     difficulty: 'advanced'
   },
-  'Gaug7': {
-    name: 'G Augmented 7',
-    positions: [3, -1, 3, 4, 4, -1],
-    fingers: [1, 0, 2, 3, 4, 0],
+  'Faug': {
+    name: 'F Augmented',
+    // F A C# - augmented triad
+    positions: [1, 4, 3, 2, 2, 1],
+    fingers: [1, 4, 3, 2, 2, 1],
+    difficulty: 'advanced'
+  },
+  'Gaug': {
+    name: 'G Augmented',
+    // G B D# - augmented triad
+    positions: [3, 2, 1, 0, 0, 3],
+    fingers: [3, 2, 1, 0, 0, 4],
+    difficulty: 'advanced'
+  },
+  'Aaug': {
+    name: 'A Augmented',
+    // A C# E# (F) - augmented triad
+    positions: [-1, 0, 3, 2, 2, 1],
+    fingers: [0, 0, 4, 2, 3, 1],
+    difficulty: 'advanced'
+  },
+  'Baug': {
+    name: 'B Augmented',
+    // B D# F## (G) - augmented triad
+    positions: [-1, 2, 1, 0, 0, 3],
+    fingers: [0, 2, 1, 0, 0, 3],
     difficulty: 'advanced'
   }
 };

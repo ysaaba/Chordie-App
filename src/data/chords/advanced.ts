@@ -33,8 +33,8 @@ export const advancedChords: Record<string, ChordDefinition> = {
   },
   'Amaj9': {
     name: 'A Major 9',
-    positions: [-1, 0, 2, 4, 2, 4],
-    fingers: [0, 0, 1, 3, 1, 4],
+    positions: [-1, 0, 2, 1, 0, 0],
+    fingers: [0, 0, 2, 1, 0, 0],
     difficulty: 'advanced'
   },
   'F#dim7': {

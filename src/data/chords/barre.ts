@@ -113,8 +113,8 @@ export const barreChords: Record<string, ChordDefinition> = {
   },
   B7: {
     name: 'B Seventh',
-    positions: [7, 9, 7, 8, 7, 7],
-    fingers: [1, 3, 1, 2, 1, 1],
+    positions: [-1, 2, 1, 2, 0, 2],
+    fingers: [0, 2, 1, 3, 0, 4],
     difficulty: 'intermediate',
   },
   // Major 7 chords
