@@ -12,6 +12,7 @@ import { augmentedChords } from './augmented';
 import { add9Chords } from './add9';
 import { maj13Chords } from './maj13';
 import { min11Chords } from './min11';
+import { powerChords } from './power';
 
 // Organize chords by category for easier maintenance
 export const chordCategories = {
@@ -28,6 +29,7 @@ export const chordCategories = {
   add9: add9Chords,
   maj13: maj13Chords,
   min11: min11Chords,
+  power: powerChords,
 } as const;
 
 // Combined chord dictionary for easy lookup

@@ -47,6 +47,18 @@ export const chordSets: ChordSet[] = [
     difficulty: 'intermediate'
   },
   {
+    name: 'Basic Power Chords',
+    description: 'Essential power chord shapes',
+    chords: ['E5', 'A5', 'D5', 'G5', 'C5', 'F5', 'B5'],
+    difficulty: 'beginner'
+  },
+  {
+    name: 'Advanced Power Chords',
+    description: 'Sharp and flat power chord variations',
+    chords: ['F#5', 'G#5', 'A#5', 'C#5', 'D#5', 'E5_alt', 'A5_alt'],
+    difficulty: 'intermediate'
+  },
+  {
     name: 'Jazz Chords',
     description: 'Common jazz chord voicings',
     chords: [
