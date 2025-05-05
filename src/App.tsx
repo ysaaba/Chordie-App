@@ -94,10 +94,10 @@ function App() {
       </header>
       <main className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* Main Content - Center */}
-          <div className="lg:col-span-8 space-y-8">
-            {/* Chord Diagram Block */}
-            <div className="bg-white p-8 rounded-lg shadow-md flex flex-col items-center">
+
+          {/* 1st on Mobile: Chord Diagram Block */}
+          {/* Desktop: Col 1-8, Row 1 */}
+          <div className="lg:col-span-8 lg:row-start-1 bg-white p-8 rounded-lg shadow-md flex flex-col items-center">
               <ChordDiagram chord={currentChord} />
               {isPlaying ? (
                 <>
@@ -120,38 +120,11 @@ function App() {
                   isPlaying={isPlaying}
                 />
               )}
-            </div>
-
-            {/* Chord Sets and Scale Selection */}
-            <div className="space-y-8">
-              {practiceMode === 'sets' && (
-                <ChordSelector
-                  selectedSetId={selection.selectedSetId}
-                  onSelectSet={selectChordSet}
-                />
-              )}
-              {practiceMode === 'scales' && (
-                <ScaleSelector
-                  selectedScale={selection.selectedScale}
-                  selectedProgression={selection.selectedProgression}
-                  onScaleChange={selectScale}
-                  onProgressionChange={selectProgression}
-                />
-              )}
-            </div>
           </div>
 
-          {/* Right Sidebar */}
-          <div className="lg:col-span-4 space-y-8">
-            {/* Practice Mode Selector */}
-            <PracticeModeSelector
-              currentMode={practiceMode}
-              onModeChange={setPracticeMode}
-              shuffleEnabled={shuffleEnabled}
-              onShuffleToggle={toggleShuffle}
-            />
-            
-            {/* Practice Controls */}
+          {/* 2nd on Mobile: Practice Controls */}
+          {/* Desktop: Col 9-12, Row 2 */}
+          <div className="lg:col-start-9 lg:col-span-4 lg:row-start-2">
             <PracticeControls
               settings={settings}
               onSettingsChange={setSettings}
@@ -164,6 +137,37 @@ function App() {
               mode={practiceMode}
             />
           </div>
+
+          {/* 3rd on Mobile: Practice Mode Selector */}
+          {/* Desktop: Col 9-12, Row 1 */}
+          <div className="lg:col-start-9 lg:col-span-4 lg:row-start-1">
+            <PracticeModeSelector
+              currentMode={practiceMode}
+              onModeChange={setPracticeMode}
+              shuffleEnabled={shuffleEnabled}
+              onShuffleToggle={toggleShuffle}
+            />
+          </div>
+
+          {/* 4th on Mobile: Chord/Scale Selectors */}
+          {/* Desktop: Col 1-8, Row 2 */}
+          <div className="lg:col-span-8 lg:row-start-2 space-y-8">
+            {practiceMode === 'sets' && (
+              <ChordSelector
+                selectedSetId={selection.selectedSetId}
+                onSelectSet={selectChordSet}
+              />
+            )}
+            {practiceMode === 'scales' && (
+              <ScaleSelector
+                selectedScale={selection.selectedScale}
+                selectedProgression={selection.selectedProgression}
+                onScaleChange={selectScale}
+                onProgressionChange={selectProgression}
+              />
+            )}
+          </div>
+
         </div>
       </main>
     </div>
