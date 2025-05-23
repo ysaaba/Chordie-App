@@ -81,8 +81,12 @@ export const useChordProgression = ({
     setCurrentBarCount(0);
   }, [historyIndex, history, practiceChords.length]);
 
+  const nextChordIndex = (currentIndex + 1) % practiceChords.length;
+  const nextChord = practiceChords.length > 1 ? practiceChords[nextChordIndex] : null;
+
   return {
     currentChord: practiceChords.length > 0 ? practiceChords[currentIndex] : null,
+    nextChord,
     handleNextChord,
     handleManualNext,
     handleManualPrevious,

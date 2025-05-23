@@ -9,17 +9,21 @@ import { EmptyChord } from './chord-diagram/EmptyChord';
 
 interface ChordDiagramProps {
   chord: ChordDefinition | null;
+  size?: 'normal' | 'small';
 }
 
-export const ChordDiagram: React.FC<ChordDiagramProps> = ({ chord }) => {
+export const ChordDiagram: React.FC<ChordDiagramProps> = ({ chord, size: sizeProp = 'normal' }) => {
   if (!chord) {
     return <EmptyChord />;
   }
 
-  const size = 200;
-  const padding = 40;
-  const stringSpacing = size / 5;
-  const fretSpacing = size / 5;
+  const baseSize = sizeProp === 'small' ? 160 : 200; // 80% of normal (200 * 0.80 = 160)
+  const padding = sizeProp === 'small' ? 32 : 40;  // 80% of normal (40 * 0.80 = 32)
+  const stringSpacing = baseSize / 5;
+  const fretSpacing = baseSize / 5;
+  const titleFontSize = sizeProp === 'small' ? 'text-lg' : 'text-2xl';
+  const svgMarginBottom = sizeProp === 'small' ? 'mb-2' : 'mb-4';
+
 
   const startFret = getStartingFret(chord.positions);
   const adjustedPositions = getAdjustedPositions(chord.positions);
@@ -27,27 +31,27 @@ export const ChordDiagram: React.FC<ChordDiagramProps> = ({ chord }) => {
   return (
     <div className="flex flex-col items-center">
       <svg
-        width={size + padding * 2}
-        height={size + padding * 2 + 30}
-        viewBox={`${-padding} ${-padding} ${size + padding * 2} ${size + padding * 2 + 30}`}
-        className="mb-4"
+        width={baseSize + padding * 2}
+        height={baseSize + padding * 2 + (sizeProp === 'small' ? 20 : 30)} // Adjust height for smaller title
+        viewBox={`${-padding} ${-padding} ${baseSize + padding * 2} ${baseSize + padding * 2 + (sizeProp === 'small' ? 20 : 30)}`}
+        className={svgMarginBottom}
       >
-        <ChordGrid size={size} strokeWidth={1} startFret={startFret} />
+        <ChordGrid size={baseSize} strokeWidth={1} startFret={startFret} />
         <StringMarkers
           positions={chord.positions}
-          size={size}
+          size={baseSize}
           stringSpacing={stringSpacing}
         />
         <FingerDots
           positions={adjustedPositions}
           fingers={chord.fingers}
-          size={size}
+          size={baseSize}
           stringSpacing={stringSpacing}
           fretSpacing={fretSpacing}
         />
-        <StringLabels size={size} stringSpacing={stringSpacing} />
+        <StringLabels size={baseSize} stringSpacing={stringSpacing} />
       </svg>
-      <h3 className="text-2xl font-normal tracking-wide text-gray-800">{chord.name}</h3>
+      <h3 className={`${titleFontSize} font-normal tracking-wide text-gray-800`}>{chord.name}</h3>
     </div>
   );
 };

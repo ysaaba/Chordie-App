@@ -43,6 +43,7 @@ function App() {
 
   const {
     currentChord,
+    nextChord,
     handleNextChord,
     handleManualNext,
     handleManualPrevious,
@@ -98,7 +99,22 @@ function App() {
           {/* 1st on Mobile: Chord Diagram Block */}
           {/* Desktop: Col 1-8, Row 1 */}
           <div className="lg:col-span-8 lg:row-start-1 bg-white p-8 rounded-lg shadow-md flex flex-col items-center">
-              <ChordDiagram chord={currentChord} />
+              {/* Container for current and next chord diagrams */}
+              <div className="flex flex-col md:flex-row items-center justify-center md:space-x-4 space-y-4 md:space-y-0">
+
+                {/* Current Chord Diagram */}
+                <div className="flex flex-col items-center">
+                  <ChordDiagram chord={currentChord} />
+                </div>
+
+                {/* Next Chord Preview (conditional) */}
+                {nextChord && (
+                  <div className="border border-gray-300 p-2 rounded-lg flex flex-col items-center">
+                    <p className="text-xs font-semibold text-gray-600 mb-1 self-start">Next:</p>
+                    <ChordDiagram chord={nextChord} size="small" />
+                  </div>
+                )}
+              </div>
               {isPlaying ? (
                 <>
                   <Metronome
