@@ -76,9 +76,15 @@ function App() {
       const scale = scales.find(s => s.name === selection.selectedScale);
       return scale?.chords.length || 0;
     }
-    if (practiceMode === 'sets' && selection.selectedSetId) {
-      const set = chordSets.find(s => s.name === selection.selectedSetId);
-      return set?.chords.length || 0;
+    if (practiceMode === 'sets' && selection.selectedSetIds && selection.selectedSetIds.length > 0) {
+      const allChordsFromSelectedSets: string[] = [];
+      selection.selectedSetIds.forEach(setId => {
+        const set = chordSets.find(s => s.name === setId);
+        if (set) {
+          allChordsFromSelectedSets.push(...set.chords);
+        }
+      });
+      return new Set(allChordsFromSelectedSets).size;
     }
     return totalChords;
   };
@@ -170,8 +176,8 @@ function App() {
           <div className="lg:col-span-8 lg:row-start-2 space-y-8">
             {practiceMode === 'sets' && (
               <ChordSelector
-                selectedSetId={selection.selectedSetId}
-                onSelectSet={selectChordSet}
+                selectedSetIds={selection.selectedSetIds} // Pass the array
+                onSelectSet={selectChordSet} // selectChordSet now expects a string
               />
             )}
             {practiceMode === 'scales' && (

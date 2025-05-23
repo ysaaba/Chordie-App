@@ -12,7 +12,7 @@ export interface PracticeSessionConfig {
 }
 
 export interface ChordSelectionState {
-  selectedSetId: string | null;
+  selectedSetIds: string[];
   selectedScale: string;
   selectedProgression: string;
 }

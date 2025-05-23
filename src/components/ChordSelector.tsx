@@ -4,12 +4,12 @@ import { chordSets } from '../data/chords';
 import type { ChordSet } from '../types/chord';
 
 interface ChordSelectorProps {
-  selectedSetId: string | null;
-  onSelectSet: (setId: string | null) => void;
+  selectedSetIds: string[];
+  onSelectSet: (setId: string) => void;
 }
 
 export const ChordSelector: React.FC<ChordSelectorProps> = ({
-  selectedSetId,
+  selectedSetIds,
   onSelectSet,
 }) => {
   return (
@@ -22,9 +22,9 @@ export const ChordSelector: React.FC<ChordSelectorProps> = ({
         {chordSets.map((set: ChordSet) => (
           <button
             key={set.name}
-            onClick={() => onSelectSet(selectedSetId === set.name ? null : set.name)}
+            onClick={() => onSelectSet(set.name)}
             className={`p-4 rounded-lg border-2 text-left transition-colors ${
-              selectedSetId === set.name
+              selectedSetIds.includes(set.name)
                 ? 'border-blue-500 bg-blue-50'
                 : 'border-gray-200 hover:border-blue-300'
             }`}
